@@ -1,0 +1,49 @@
+name: edsp_final3
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  chopper: any
+  cupertino_icons: ^1.0.2
+  dio: any
+  dio_logger: ^4.0.8+8
+  http: any
+  json_serializable: any
+  get: ^4.6.5
+  firebase_core: ^1.24.0
+  firebase_auth: ^3.11.2
+  google_sign_in: ^5.4.2
+  flutter_svg: ^2.0.0
+  flutter_widget_from_html: ^0.10.0
+  connectivity_plus: ^3.0.2
+  form_builder_validators: ^8.4.0
+  flutter_widget_from_html_core: ^0.10.0
+  image_picker: ^0.8.7+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # flutter_lints: ^2.0.0
+  build_runner: any
+  chopper_generator: any
+  flutter_lints: ^1.0.0
+  flutter_launcher_icons: "^0.12.0"
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon_2.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/dummies/
