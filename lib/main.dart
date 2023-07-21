@@ -1,20 +1,45 @@
+import 'dart:io';
+import 'package:edsp_final3/routes/apps_bindings.dart';
+import 'package:edsp_final3/routes/apps_route.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'core/values/colors.dart';
 
-void main() {
-  runApp(const MainApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(const MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+    return GetMaterialApp(
+      title: 'E Learning',
+      theme: ThemeData(
+        primaryColor: AppColors.primary,
+        fontFamily: '',
+        appBarTheme: AppBarTheme(
+          backgroundColor: AppColors.primary,
         ),
       ),
+      debugShowCheckedModeBanner: false,
+      initialRoute: Routes.splash,
+      getPages: Pages.pages,
     );
+  }
+}
+
+/// To handle Error: HandshakeException: Handshake error in client (OS Error: CERTIFICATE_VERIFY_FAILED: certificate has expired(handshake.cc:393))
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
